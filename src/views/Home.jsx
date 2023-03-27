@@ -1,6 +1,4 @@
-import React from 'react';
-import { useContext } from 'react';
-import { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 
@@ -15,8 +13,8 @@ const Home = () => {
 
     setNameValue(newNameValue);
     if (newNameValue === '') setNameError('Name is required ');
-    else if (!/^[A-Z][a-z]{2,}$/.test(newNameValue))
-      setNameError('Only letters and blanks are allowed and least should be 3 letters');
+    /*else if (!/^[A-Z][a-z]{2,}$/.test(newNameValue))
+      setNameError('Only letters and blanks are allowed and least should be 3 letters');*/
     else setNameError(null);
   };
 

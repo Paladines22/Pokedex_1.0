@@ -3,7 +3,7 @@ import MainLayout from './components/MainLayout';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './views/Home';
 import Pokedex from './views/Pokedex';
-import { PokemonDetail } from './views/PokemonDetail';
+import PokemonDetail from './views/PokemonDetail';
 
 export const router = createBrowserRouter([
   {
