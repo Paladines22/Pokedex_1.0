@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { getPokemons } from '../hooks/getPokemons';
+import { getData } from '../services/getData';
 
 const PokemonCard = ({ pokemon }) => {
   const [pokemonInfo, setPokemonInfo] = useState(null);
 
   const fetchPokemon = async () => {
-    const res = await getPokemons(pokemon.url);
+    const res = await getData(pokemon.url);
     setPokemonInfo(res);
   };
 

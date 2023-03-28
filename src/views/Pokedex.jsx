@@ -1,22 +1,25 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PokemonList from '../components/PolemonList';
 import { UserContext } from '../context/UserContext';
-import { getPokemons } from '../hooks/getPokemons';
+import { getData } from '../services/getData';
 
 const Pokedex = () => {
   const { user } = useContext(UserContext);
   const [pokemonsData, setPokemonsData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [types, setTypes] = useState([]);
 
-  const Pokemon = async () => {
-    let res = await getPokemons('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1281');
-    console.log(res);
+  const loadData = async () => {
+    const res = await getData('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1281');
+    const res2 = await getData('https://pokeapi.co/api/v2/type/');
+
     setPokemonsData(res.results);
+    setTypes(res2.results);
   };
 
   useEffect(() => {
     if (pokemonsData.length === 0) {
-      Pokemon();
+      loadData();
     }
   }, [pokemonsData]);
 
@@ -40,28 +43,15 @@ const Pokedex = () => {
         value={searchTerm}
         onChange={handleChange}
       />
-      <label for="tipo-pokemon">Filtrar por tipo:</label>
-      <select id="tipo-pokemon">
-        <option value="todos">Todos los tipos</option>
-        <option value="normal">Normal</option>
-        <option value="fuego">Fuego</option>
-        <option value="agua">Agua</option>
-        <option value="planta">Planta</option>
-        <option value="eléctrico">Eléctrico</option>
-        <option value="hielo">Hielo</option>
-        <option value="lucha">Lucha</option>
-        <option value="veneno">Veneno</option>
-        <option value="tierra">Tierra</option>
-        <option value="volador">Volador</option>
-        <option value="psíquico">Psíquico</option>
-        <option value="bicho">Bicho</option>
-        <option value="roca">Roca</option>
-        <option value="fantasma">Fantasma</option>
-        <option value="dragón">Dragón</option>
-        <option value="siniestro">Siniestro</option>
-        <option value="acero">Acero</option>
-        <option value="hada">Hada</option>
-      </select>
+      <form>
+        <select name="pokemon_type">
+          {types.map((type) => (
+            <option key={type.url} value={type.name}>
+              {type.name}
+            </option>
+          ))}
+        </select>
+      </form>
       <PokemonList pokemonsData={filteredPokemons} />
     </div>
   );
