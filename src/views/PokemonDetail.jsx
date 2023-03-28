@@ -1,4 +1,4 @@
-/*import React from 'react';
+import React from 'react';
 
 const PokemonDetail = () => {
   return (
@@ -98,4 +98,4 @@ const PokemonDetail = () => {
   );
 };
 
-export default PokemonDetail;*/
+export default PokemonDetail;

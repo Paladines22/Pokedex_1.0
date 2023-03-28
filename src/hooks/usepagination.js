@@ -32,7 +32,7 @@ export const usePagination = (itemList, itemQuantityPerPage) => {
 
   useEffect(() => {
     changePageTo(currentPage);
-  }, [itemList, itemQuantityPerPage]);
+  });
 
   return {
     currentPage,

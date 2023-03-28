@@ -16,7 +16,6 @@ const PokemonCard = ({ pokemon }) => {
   if (!pokemonInfo) {
     return <div>Loading...</div>;
   }
-
   return (
     <div className="border">
       <h2>{pokemonInfo.name}</h2>
