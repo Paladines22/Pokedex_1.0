@@ -14,8 +14,8 @@ const Home = () => {
     setNameValue(newNameValue);
     if (newNameValue === '') setNameError('Name is required ');
     /*else if (!/^[A-Z][a-z]{2,}$/.test(newNameValue))
-      setNameError('Only letters and blanks are allowed and least should be 3 letters');*/
-    else setNameError(null);
+      setNameError('Only letters and blanks are allowed and least should be 3 letters');*/ else
+      setNameError(null);
   };
 
   const handleSubmit = (e) => {
@@ -26,7 +26,7 @@ const Home = () => {
     }
   };
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col justify-center h-screen max-h-screen ">
       <div className="flex justify-center">
         <img src="/poke_img.png" alt="pokedex" />
       </div>
@@ -51,6 +51,13 @@ const Home = () => {
       {nameError && <p className="text-red-400 text-center">{nameError}</p>}
 
       {user && <Navigate to="/pokedex" />}
+      <div className="max-w-full ">
+        <div className=" bg-red-500 z-0 h-12"></div>
+        <div className=" bg-black z-0 h-8"></div>
+        <div className="bg-white rounded-full z-1 bottom-14 relative h-14 w-14 border-solid border-4 border-black flex items-center justify-center m-auto m-0 ">
+          <div className="bg-black rounded-full h-8 w-8 "></div>
+        </div>
+      </div>
     </div>
   );
 };

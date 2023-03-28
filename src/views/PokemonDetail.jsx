@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PokemonDetail = () => {
+const PokemonDetail = ({ pokemonInfo }) => {
   return (
     <div>
       <img

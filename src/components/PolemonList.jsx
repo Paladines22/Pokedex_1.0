@@ -14,7 +14,7 @@ const PokemonList = ({ pokemonsData }) => {
   } = usePagination(pokemonsData, quantity);
   return (
     <div>
-      <div className="container-btns">
+      <div className="container-btns flex ">
         <button onClick={previousPage}>Previous</button>
         {pages.map((page) => (
           <div
