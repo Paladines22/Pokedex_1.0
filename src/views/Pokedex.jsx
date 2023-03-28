@@ -33,25 +33,30 @@ const Pokedex = () => {
 
   return (
     <div className="">
-      <p>
-        <span className="text-red-500 font-semibold">Bienvenido {user},</span>aqui
-        encontraras tus pokemons favoritos
+      <p className="text-center relative bottom-14">
+        <span className="text-red-500 font-bold">Bienvenid@ {user}, </span>aquí
+        encontrarás tus pokemons favoritos
       </p>
-      <input
-        type="text"
-        placeholder="Buscar por nombre"
-        value={searchTerm}
-        onChange={handleChange}
-      />
-      <form>
-        <select name="pokemon_type">
-          {types.map((type) => (
-            <option key={type.url} value={type.name}>
-              {type.name}
-            </option>
-          ))}
-        </select>
-      </form>
+      <div className="flex flex-wrap content-center relative max-w-full bottom-8 ">
+        <input
+          type="text"
+          placeholder="Buscar por nombre ..."
+          value={searchTerm}
+          onChange={handleChange}
+          className="drop-shadow-lg mr-20 h-8 w-80 pl-2 ml-10 rounded"
+        />
+        <form className="drop-shadow-lg">
+          {' '}
+          Pokemons por tipos{'   '}
+          <select className="h-8 rounded text-red-400  font-bold" name="pokemon_type ">
+            {types.map((type) => (
+              <option key={type.url} value={type.name}>
+                {type.name}
+              </option>
+            ))}
+          </select>
+        </form>
+      </div>
       <PokemonList pokemonsData={filteredPokemons} />
     </div>
   );
