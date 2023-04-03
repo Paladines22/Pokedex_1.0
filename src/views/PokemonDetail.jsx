@@ -1,6 +1,28 @@
 import React from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+
+const getPokemonById = async (id) => {
+  try {
+    const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const PokemonDetail = ({ pokemonInfo }) => {
+  const { id } = useParams();
+
+  useEffect(() => {
+    const loadData = async () => {
+      const pokemon = await getPokemonById(id);
+      console.log(pokemon);
+    };
+
+    loadData();
+  }, []);
   return (
     <div>
       <img

@@ -13,8 +13,8 @@ const PokemonList = ({ pokemonsData }) => {
     changePageTo,
   } = usePagination(pokemonsData, quantity);
   return (
-    <div>
-      <div className="container-btns flex ">
+    <div className="grid">
+      <div className="pointer container-btns flex flex-wrap gap-2 ">
         <button onClick={previousPage}>Previous</button>
         {pages.map((page) => (
           <div
@@ -37,9 +37,11 @@ const PokemonList = ({ pokemonsData }) => {
           <option value="40">40</option>
         </select>
       </div>
-      {pokemonsDataSlice.map((pokemon) => (
-        <PokemonCard key={pokemon.name} pokemon={pokemon} />
-      ))}
+      <div className="mt-10 flex flex-wrap gap-6 content-center">
+        {pokemonsDataSlice.map((pokemon) => (
+          <PokemonCard key={pokemon.name} pokemon={pokemon} />
+        ))}
+      </div>
     </div>
   );
 };
